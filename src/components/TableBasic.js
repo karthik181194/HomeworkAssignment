@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ApiContext } from "./ParentWrapper";
 import { useTable, usePagination, useSortBy } from 'react-table'
 import { bylineColumn, imageColumn, videoColumn } from './Columns';
+import EditableTableCell from "./EditableTableCell";
 
 const TableBasic = ({ currentTab }) => {
 
@@ -58,11 +59,20 @@ const TableBasic = ({ currentTab }) => {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
+                {row.cells.map((cell,index) => {
                   return (
-                    <td {...cell.getCellProps()}>
-                      {cell.render('Cell')}
-                    </td>
+                    <React.Fragment key={index}>
+                    { cell.column.id === "video.url" &&
+                      <>
+                        <EditableTableCell value={cell.value} />
+                      </>
+                    }
+                    {cell.column.id !== "video.url" &&
+                      <td {...cell.getCellProps()}>
+                        {cell.render('Cell')}
+                      </td>
+                    }
+                  </React.Fragment>
                   )
                 })}
               </tr>

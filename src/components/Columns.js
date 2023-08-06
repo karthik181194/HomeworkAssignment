@@ -13,7 +13,8 @@ export const bylineColumn = [
     {
         Header:'Url',
         accessor:'bylines[0].url',
-        width: 150
+        width: 150,
+        Cell: props => <a href={props.cell.value} rel="noreferrer" target="_blank">{props.cell.value}</a>
     },
     {
         Header:'Twitter',
