@@ -18,6 +18,24 @@ const TableBasic = ({ currentTab }) => {
     columns = bylineColumn;
   }
 
+  function returnCellValue(input) {
+    if (input.cell.value) {
+      switch (input?.cell?.column?.id) {
+        case "bylines[0].url":case "bylines[0].twitter_url":case "video.url":
+          return <a href={input.cell.value} rel="noreferrer" target="_blank">{input.cell.value}</a>
+        case "image.ratios.16:9.100":
+          return <img src={input.cell.value} alt={"thumbnail"} />
+        case "image.date":
+          return <span>{(input.cell.value).replace(/T/g, " ")}</span>
+        default:
+          return input.cell.value
+      }
+    }
+    else {
+      return '-'
+    }
+  }
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -33,6 +51,10 @@ const TableBasic = ({ currentTab }) => {
   } = useTable({
     columns,
     data: value,
+    defaultColumn: {
+      Cell: returnCellValue,
+      width: 150
+    },
     initialState: { pageIndex: 0, pageSize: 5 },
   }, useSortBy, usePagination)
 

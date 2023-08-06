@@ -2,56 +2,42 @@
 export const bylineColumn = [
     {
         Header:'Id',
-        accessor:'bylines[0].id',
-        width: 150
+        accessor:'bylines[0].id'
     },
     {
         Header:'Name',
-        accessor:'bylines[0].display_name',
-        width: 150
+        accessor:'bylines[0].display_name'
     },
     {
         Header:'Url',
-        accessor:'bylines[0].url',
-        width: 150,
-        Cell: props => <a href={props.cell.value} rel="noreferrer" target="_blank">{props.cell.value}</a>
+        accessor:'bylines[0].url'
     },
     {
         Header:'Twitter',
-        accessor:'bylines[0].twitter',
-        width: 150
+        accessor:'bylines[0].twitter'
     },
     {
         Header:'Twitter Url',
-        accessor:'bylines[0].twitter_url',
-        width: 150,
-        Cell: props => <a href={props.cell.value} rel="noreferrer" target="_blank">{props.cell.value}</a>
+        accessor:'bylines[0].twitter_url'
     },
 ]
 
 export const imageColumn = [
     {
         Header:'Id',
-        accessor:'image.id',
-        width: 150
+        accessor:'image.id'
     },
     {
         Header:'Date',
-        accessor:'image.date',
-        width: 150,
-        Cell: props => <span>{(props.cell.value).replace(/T/g, " ")}</span>
-        
+        accessor:'image.date'
     },
     {
         Header:'Title',
-        accessor:'image.title.rendered',
-        width: 150
+        accessor:'image.title.rendered'
     },
     {
         Header:'Ratios',
-        accessor:'image.ratios.16:9.100',
-        width: 150,
-        Cell: props => <img src={props.cell.value} alt={"thumbnail"} />
+        accessor:'image.ratios.16:9.100'
     },
 
 ]
@@ -59,19 +45,15 @@ export const imageColumn = [
 export const videoColumn = [
     {
         Header:'Id',
-        accessor:'video.id',
-        width: 150
+        accessor:'video.id'
     },
     {
         Header:'Title',
-        accessor:'video.title',
-        width: 150
+        accessor:'video.title'
     },
     {
         Header:'Url',
         accessor:'video.url',
-        width: 150,
-        editable: true,
-        Cell:  props => <a href={props.cell.value} rel="noreferrer" target="_blank">{props.cell.value}</a>
+        editable: true
     }
 ]

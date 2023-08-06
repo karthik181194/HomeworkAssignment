@@ -15,6 +15,7 @@ const EditableTableCell = ({ value }) => {
         setInputValue(e.target.value)
     }
     return (
+        value ?
         <td
             onDoubleClick={handleClick}
             className={isInputVisible ? 'input-visible' : ''}
@@ -32,6 +33,7 @@ const EditableTableCell = ({ value }) => {
                 <a href={inputValue} onClick={(e) => e.stopPropagation()} rel="noreferrer" target="_blank">{inputValue}</a>
             )}
         </td>
+        : <td>-</td>
     );
 };
 
